@@ -1,4 +1,4 @@
-# Software Requirement Specifications
+# SRS for Product Data Pool + Odoo
 
 ## 1. Introduction
 This document describes the software requirements for the development of a two-part application for collecting product data from various large online shops and pooling it into a single large database called the "data pool". The application will integrate with Odoo and allow users to search for products and add them to their Odoo product catalog.
@@ -15,55 +15,111 @@ The data pool is a MySQL database that stores product data from large wholesaler
 ### 2.2 Odoo Module
 The Odoo module provides a user interface for searching the data pool and selecting products to add to the Odoo product catalog. The module communicates with the data pool via a REST API.
 
-## 3. Functional Requirements
+# 3. Data Pool Flask Application - Software Requirements Specification
 
-### 3.1 Data Pool
+## 3.1. Introduction
 
-#### 3.1.1 CSV File Upload
-- The system must provide FTP or HTTP interfaces for uploading CSV files.
+The Data Pool Flask application is a web-based application that consolidates product data from various large online shops into a single large database called the "data pool". The application provides an interface to manage sources of data, users, and upload product data through CSV files. Admin users can add, edit, and deactivate sources, while authenticated users can upload CSV files.
 
-#### 3.1.2 API Connections
-- The system must support dedicated API scripts for each wholesaler.
-- The system must provide proper authentication for API connections.
+## 3.2. Features
 
-#### 3.1.3 Web Scraping
-- The system must support custom web scrapers for different websites.
+### 3.2.1. Authentication
 
-#### 3.1.4 REST API
-- The system must provide a REST API for accessing data in the data pool.
-- The system must require an API key for authentication.
+- Admin login using a master password
+- Regular user login using a username and password
 
-### 3.2 Odoo Module
+### 3.2.2. User Management
 
-#### 3.2.1 Search Feature
+- Admins can create, edit, and view users
+- Admins can grant or revoke admin access to users
+
+### 3.2.3. Source Management
+
+- Admins can add, edit, and deactivate sources
+- Each source has an ID, URL, name, city, and postal code
+
+### 3.2.4. CSV File Upload
+
+- Authenticated users can upload CSV files containing product data
+- CSV files are parsed and stored in the MySQL database
+
+### 3.2.5. REST API
+
+- A REST API is provided to access the data pool
+- API authentication using an API key
+
+## 4. Database Schema
+
+### 4.1. Product Table
+
+- Stores product data for photovoltaic components
+- 10 most important fields for photovoltaic components
+- Includes a last updated timestamp
+
+### 4.2. Manufacturer Table
+
+- Stores manufacturer data
+- Includes a name and an ID
+
+### 4.3. Source Table
+
+- Stores the source of the data, typically a website
+- Fields include ID, URL, name, city, and postal code
+- Includes a last updated timestamp and an active status
+
+## 4.4. Technologies
+
+- Python Flask for the web application
+- MySQL for the database
+- SQLAlchemy as the Object Relational Mapper (ORM)
+- WTForms for form handling
+- Jinja2 for HTML templating
+- REST API for data access
+
+## 4.5. Installation and Setup
+
+- Python 3.x
+- MySQL Server
+- Required Python packages (Flask, Flask-SQLAlchemy, Flask-WTF, etc.)
+- Configuration files for database credentials and master password
+
+## 4.6. Future Scope
+
+- Support for additional input mechanisms such as API connections and web scraping
+- Additional features and improvements to the REST API
+- Expansion of the data model to support more product types and fields
+
+# 5. Odoo Module
+
+## 5.1 Search Feature
 - The module must provide a search bar for users to search by keyword.
 - The module must display search results in a standard Odoo list view.
 - The list view must include columns for the article number, title, manufacturer, price (if available), and an "add to catalog" button.
 
-#### 3.2.2 Product Details Pop-up
+# 5.2 Product Details Pop-up
 - The module must allow users to click on a search result and open a pop-up with further product details.
 - The pop-up must display an image (if available), long descriptions, technical parameters, etc.
 
-#### 3.2.3 Add to Catalog
+# 5.3 Add to Catalog
 - The module must allow users to add products to their Odoo product catalog by clicking the "add to catalog" button.
 
-## 4. Non-Functional Requirements
+## 6. Non-Functional Requirements
 
-### 4.1 Performance
+### 6.1 Performance
 - The system must be able to handle a large number of products in the data pool.
 - The system must provide fast and efficient search results.
 
-### 4.2 Scalability
+### 6.2 Scalability
 - The system must be able to accommodate new wholesalers and their data input mechanisms.
 - The system must be able to handle a growing number of users and concurrent searches.
 
-### 4.3 Security
+### 6.3 Security
 - The system must ensure secure data storage and transfer.
 - The system must enforce proper authentication for API connections and data access.
 
-### 4.4 Maintainability
+### 6.4 Maintainability
 - The system must be easy to update and maintain.
 - The system must support the addition of new features and enhancements without significant rework.
 
-## 5. System Architecture
-The system architecture consists of two main components: the data pool and the Odoo module. The data pool is a MySQL database with associated Python scripts for data manipulation. The Odoo module communicates with the data pool via a REST API.
+## 7. System Architecture
+The system architecture consists of two main components: the Product Data Pool and the Odoo Module. The data pool is a MySQL database with associated Python scripts for data manipulation. The Odoo module communicates with the Data Pool via a REST API.
