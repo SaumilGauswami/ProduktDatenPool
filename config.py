@@ -12,3 +12,5 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///app.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    MASTER_PASSWORD = os.environ.get('MASTER_PASSWORD') or 'your-master-password'
