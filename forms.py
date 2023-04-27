@@ -16,3 +16,10 @@ class RegisterForm(FlaskForm):
 
 class UploadForm(FlaskForm):
     submit = SubmitField('Upload')
+
+class SourceForm(FlaskForm):
+    url = StringField('URL', validators=[DataRequired(), URL()])
+    name = StringField('Name', validators=[DataRequired()])
+    city = StringField('City')
+    postal_code = StringField('Postal Code')
+    submit = SubmitField('Submit')
