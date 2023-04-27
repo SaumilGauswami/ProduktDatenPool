@@ -19,7 +19,8 @@
                 <th>Name</th>
                 <th>City</th>
                 <th>Postal Code</th>
-                <th>Last Updated</th>
+                <th>Active</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +31,14 @@
                     <td>{{ source.name }}</td>
                     <td>{{ source.city }}</td>
                     <td>{{ source.postal_code }}</td>
-                    <td>{{ source.last_updated }}</td>
+                    <td>{{ source.active }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_source', source_id=source.id) }}">Edit</a>
+                        <form method="POST" action="{{ url_for('deactivate_source', source_id=source.id) }}" style="display:inline;">
+                            {{ form.csrf_token }}
+                            <input type="submit" value="{{ 'Deactivate' if source.active else 'Activate' }}">
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
