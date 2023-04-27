@@ -2,3 +2,31 @@
 
 {% block content %}
     <h2>Users</h2>
+    <form method="POST" action="{{ url_for('users') }}">
+        {{ form.csrf_token }}
+        {{ form.username.label }}: {{ form.username }}
+        {{ form.password.label }}: {{ form.password }}
+        {{ form.is_admin.label }}: {{ form.is_admin }}
+        {{ form.submit }}
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Is Admin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.is_admin }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}
