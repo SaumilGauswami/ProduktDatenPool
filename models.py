@@ -21,6 +21,9 @@ class Source(db.Model):
     city = db.Column(db.String(255), nullable=True)
     postal_code = db.Column(db.String(10), nullable=True)
     last_updated = db.Column(db.DateTime, nullable=True)
+    
+    active = db.Column(db.Boolean, default=True)
+
 
 # Add this to the existing models.py
 
