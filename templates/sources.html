@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Sources</h2>
+    <form method="POST" action="{{ url_for('sources') }}">
+        {{ form.csrf_token }}
+        {{ form.url.label }}: {{ form.url }}
+        {{ form.name.label }}: {{ form.name }}
+        {{ form.city.label }}: {{ form.city }}
+        {{ form.postal_code.label }}: {{ form.postal_code }}
+        {{ form.submit }}
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>URL</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Postal Code</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for source in sources %}
+                <tr>
+                    <td>{{ source.id }}</td>
+                    <td>{{ source.url }}</td>
+                    <td>{{ source.name }}</td>
+                    <td>{{ source.city }}</td>
+                    <td>{{ source.postal_code }}</td>
+                    <td>{{ source.last_updated }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
