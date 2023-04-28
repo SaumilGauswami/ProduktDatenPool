@@ -1,25 +1,26 @@
 # SRS for Product Data Pool + Odoo
 
 ## 1. Introduction
-This document describes the software requirements for the development of a two-part application for collecting product data from various large online shops and pooling it into a single large database called the "data pool". The application will integrate with Odoo and allow users to search for products and add them to their Odoo product catalog.
+This document describes the software requirements for the development of a two-part application for collecting product data from various large online shops and pooling it into a single large database called the "Product Data Pool". 
+The application will integrate with Odoo and allow users to search for products and allow them to add specific products to their Odoo product catalog.
 
 ## 2. System Overview
 
 ### 2.1 Data Pool
-The data pool is a MySQL database that stores product data from large wholesalers. The data is obtained via three input mechanisms:
+The data pool is a MySQL database that stores product data from large wholesalers. The data is obtained from Sources (wholesaler websites) via three input mechanisms:
 
 1. **CSV file uploads**: Wholesalers can provide a CSV file which can be uploaded over FTP or HTTP interfaces.
 2. **API connections**: Each wholesaler has a dedicated API script to draw data from specific endpoints with proper authentication.
 3. **Web scraping**: Custom web scrapers are written to scrape product data from different websites according to their structure.
 
-### 2.2 Odoo Module
+### 2. Odoo Module
 The Odoo module provides a user interface for searching the data pool and selecting products to add to the Odoo product catalog. The module communicates with the data pool via a REST API.
 
-# 3. Data Pool Flask Application - Software Requirements Specification
+# 3. Data Pool Flask Application
 
 ## 3.1. Introduction
 
-The Data Pool Flask application is a web-based application that consolidates product data from various large online shops into a single large database called the "data pool". The application provides an interface to manage sources of data, users, and upload product data through CSV files. Admin users can add, edit, and deactivate sources, while authenticated users can upload CSV files.
+The Data Pool Flask application is a web-based application that consolidates product data from various large online shops into a single large database called the PDP. The application provides an interface to manage sources of data, users, and upload product data through CSV files. Admin users can add, edit, and deactivate sources, while authenticated users can upload CSV files and provide their API credentials to connect to Sources.
 
 ## 3.2. Features
 
