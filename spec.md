@@ -13,8 +13,10 @@ The data pool is a MySQL database that stores product data from large wholesaler
 2. **API connections**: Each wholesaler has a dedicated API script to draw data from specific endpoints with proper authentication.
 3. **Web scraping**: Custom web scrapers are written to scrape product data from different websites according to their structure.
 
-### 2. Odoo Module
+### 2.2. Odoo Module
 The Odoo module provides a user interface for searching the data pool and selecting products to add to the Odoo product catalog. The module communicates with the data pool via a REST API.
+
+See section 5 below.
 
 # 3. Data Pool Flask Application
 
@@ -43,10 +45,11 @@ The Data Pool Flask application is a web-based application that consolidates pro
 
 - Authenticated users can upload CSV files containing product data
 - CSV files are parsed and stored in the MySQL database
+- CSV files structures differ for Sources
 
 ### 3.2.5. REST API
 
-- A REST API is provided to access the data pool
+- A REST API is provided to access the data pool (for example from an Odoo instance)
 - API authentication using an API key
 
 ## 4. Database Schema
@@ -95,14 +98,15 @@ The Data Pool Flask application is a web-based application that consolidates pro
 ## 5.1 Search Feature
 - The module must provide a search bar for users to search by keyword.
 - The module must display search results in a standard Odoo list view.
-- The list view must include columns for the article number, title, manufacturer, price (if available), and an "add to catalog" button.
+- The list view must include columns for the article number, title, manufacturer, price (if available), and an "Add to catalog" button (5.3).
 
 # 5.2 Product Details Pop-up
 - The module must allow users to click on a search result and open a pop-up with further product details.
 - The pop-up must display an image (if available), long descriptions, technical parameters, etc.
+- A link to the original website is provided in the popup.
 
 # 5.3 Add to Catalog
-- The module must allow users to add products to their Odoo product catalog by clicking the "add to catalog" button.
+- The module must allow users to add products to their Odoo product catalog (product.product) by clicking the "add to catalog" button.
 
 ## 6. Non-Functional Requirements
 
@@ -111,7 +115,7 @@ The Data Pool Flask application is a web-based application that consolidates pro
 - The system must provide fast and efficient search results.
 
 ### 6.2 Scalability
-- The system must be able to accommodate new wholesalers and their data input mechanisms.
+- The system must be able to accommodate new wholesalers (Sources) and their data input mechanisms.
 - The system must be able to handle a growing number of users and concurrent searches.
 
 ### 6.3 Security
@@ -123,4 +127,9 @@ The Data Pool Flask application is a web-based application that consolidates pro
 - The system must support the addition of new features and enhancements without significant rework.
 
 ## 7. System Architecture
-The system architecture consists of two main components: the Product Data Pool and the Odoo Module. The data pool is a MySQL database with associated Python scripts for data manipulation. The Odoo module communicates with the Data Pool via a REST API.
+The system architecture consists of two main components: 
+
+1. the Product Data Pool and 
+2. the Odoo Module. 
+
+The data pool is a MySQL database with associated Python scripts for data manipulation. The Odoo module communicates with the Data Pool via a REST API.
