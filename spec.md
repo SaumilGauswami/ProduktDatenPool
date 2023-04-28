@@ -133,3 +133,5 @@ The system architecture consists of two main components:
 2. the Odoo Module. 
 
 The data pool is a MySQL database with associated Python scripts for data manipulation. The Odoo module communicates with the Data Pool via a REST API.
+
+![image](https://user-images.githubusercontent.com/7826363/235072695-37408f28-923c-469d-9934-01fcf959e165.png)
