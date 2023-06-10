@@ -1,5 +1,7 @@
 # SRS for Product Data Pool + Odoo
 
+![image](https://user-images.githubusercontent.com/7826363/235072695-37408f28-923c-469d-9934-01fcf959e165.png)
+
 ## 1. Introduction
 This document describes the software requirements for the development of a two-part application for collecting product data from various large online shops and pooling it into a single large database called the "Product Data Pool". 
 The application will integrate with Odoo and allow users to search for products and allow them to add specific products to their Odoo product catalog.
@@ -100,38 +102,49 @@ The Data Pool Flask application is a web-based application that consolidates pro
 - The module must display search results in a standard Odoo list view.
 - The list view must include columns for the article number, title, manufacturer, price (if available), and an "Add to catalog" button (5.3).
 
-# 5.2 Product Details Pop-up
+## 5.2 Product Details Pop-up
 - The module must allow users to click on a search result and open a pop-up with further product details.
 - The pop-up must display an image (if available), long descriptions, technical parameters, etc.
 - A link to the original website is provided in the popup.
 
-# 5.3 Add to Catalog
+## 5.3 Add to Catalog
 - The module must allow users to add products to their Odoo product catalog (product.product) by clicking the "add to catalog" button.
 
-## 6. Non-Functional Requirements
+## 5.4. Pricing
 
-### 6.1 Performance
+1. It is not allowed to store prices in the PDP application, due to contractual and legal restrictions.
+2. Prices are not available publicly on the Source websites. They are visible only after login. Odoo user company is granted a login by Source/Vendor.
+3. Odoo user company however has the legal/contractual rights to obtain pricing-data from Sources directly (bypassing the PDP).
+4. Odoo user company can obtain a username and password to Source website, in order to read pricing from respective website.
+    1. This is purchase pricing (stored on the product for specific vendor).
+    2. Login with the username/password with the scraper FROM ODOO, obtain price value and store in related Odoo field.
+    3. Store currency.
+    4. Show pricing in default currency of Odoo. Use default currency exhange mechanism in Odoo.
+    5. Pricing can of course be different per Source/Vendor.
+    6. Do not store username/password on PDP.
+
+# 6. Non-Functional Requirements
+
+## 6.1 Performance
 - The system must be able to handle a large number of products in the data pool.
 - The system must provide fast and efficient search results.
 
-### 6.2 Scalability
+## 6.2 Scalability
 - The system must be able to accommodate new wholesalers (Sources) and their data input mechanisms.
 - The system must be able to handle a growing number of users and concurrent searches.
 
-### 6.3 Security
+## 6.3 Security
 - The system must ensure secure data storage and transfer.
 - The system must enforce proper authentication for API connections and data access.
 
-### 6.4 Maintainability
+## 6.4 Maintainability
 - The system must be easy to update and maintain.
 - The system must support the addition of new features and enhancements without significant rework.
 
-## 7. System Architecture
+# 7. System Architecture
 The system architecture consists of two main components: 
 
 1. the Product Data Pool and 
 2. the Odoo Module. 
 
 The data pool is a MySQL database with associated Python scripts for data manipulation. The Odoo module communicates with the Data Pool via a REST API.
-
-![image](https://user-images.githubusercontent.com/7826363/235072695-37408f28-923c-469d-9934-01fcf959e165.png)
