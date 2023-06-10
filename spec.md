@@ -122,6 +122,7 @@ The Data Pool Flask application is a web-based application that consolidates pro
     4. Show pricing in default currency of Odoo. Use default currency exhange mechanism in Odoo.
     5. Pricing can of course be different per Source/Vendor.
     6. Do not store username/password on PDP.
+    7. User/Pass to Sources can be stored in Contact > Website-login (new tab)
 
 # 6. Non-Functional Requirements
 
@@ -148,3 +149,10 @@ The system architecture consists of two main components:
 2. the Odoo Module. 
 
 The data pool is a MySQL database with associated Python scripts for data manipulation. The Odoo module communicates with the Data Pool via a REST API.
+
+# 8. Languages
+
+Odoo module and PDP are multilingual.
+Languages can be adapted in language files on command-lines.
+
+
