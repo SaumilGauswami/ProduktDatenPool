@@ -113,16 +113,20 @@ The Data Pool Flask application is a web-based application that consolidates pro
 ## 5.4. Pricing
 
 1. It is not allowed to store prices in the PDP application, due to contractual and legal restrictions.
-2. Prices are not available publicly on the Source websites. They are visible only after login. Odoo user company is granted a login by Source/Vendor.
-3. Odoo user company however has the legal/contractual rights to obtain pricing-data from Sources directly (bypassing the PDP).
+2. Prices are not available publicly on the Source websites. 
+3. Odoo user company has the legal/contractual rights to obtain pricing-data from Sources directly (bypassing the PDP).
 4. Odoo user company can obtain a username and password to Source website, in order to read pricing from respective website.
     1. This is purchase pricing (stored on the product for specific vendor).
-    2. Login with the username/password with the scraper FROM ODOO, obtain price value and store in related Odoo field.
+    2. Login with the username/password with the respective scraper FROM ODOO, obtain price value and store in related Odoo field.
     3. Store currency.
     4. Show pricing in default currency of Odoo. Use default currency exhange mechanism in Odoo.
     5. Pricing can of course be different per Source/Vendor.
     6. Do not store username/password on PDP.
     7. User/Pass to Sources can be stored in Contact > Website-login (new tab)
+
+### Coding Practice
+
+- Write the scraper login code only once (DRY principle).
 
 # 6. Non-Functional Requirements
 
