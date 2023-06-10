@@ -152,7 +152,7 @@ The data pool is a MySQL database with associated Python scripts for data manipu
 
 # 8. Languages
 
-Odoo module and PDP are multilingual.
-Languages can be adapted in language files on command-lines.
+1. Odoo module and PDP are multilingual.
+2. Translations can be maintained in language-files on command-lines/code-editor.
 
 
