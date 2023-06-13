@@ -1,6 +1,6 @@
 # SRS for Product Data Pool + Odoo
 
-![image](https://user-images.githubusercontent.com/7826363/235072695-37408f28-923c-469d-9934-01fcf959e165.png)
+![image](https://github.com/euroblaze/ProduktDatenPool/assets/7826363/040b55f1-a94d-42c6-a634-8f312ae556e8)
 
 ## 1. Introduction
 This document describes the software requirements for the development of a two-part application for collecting product data from various large online shops and pooling it into a single large database called the "Product Data Pool". 
