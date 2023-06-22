@@ -35,6 +35,8 @@ This will run the both the crawlers and store the data to the database.
 
 ### API endpoint to check the product details
 ```
+All this API need an authorization api key that needs to pass in the header
+
 Product List API:-
 http://localhost:5009/api/product
 http://localhost:5009/api/product/?product_id=1
@@ -42,4 +44,7 @@ http://localhost:5009/api/product/?product_id=1
 For admin UI:-
 http://localhost:5009/admin
 
+example curl request for the product api:-
+curl --location 'http://127.0.0.1:5009/api/product?product_id=1' \
+--header 'Authorization: {your api key}'
 ```
