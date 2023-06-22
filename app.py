@@ -27,8 +27,9 @@ def create_app():
     session = get_session(database_url)
 
     admin = Admin(app)
-    # admin.add_view(MyModelView(SolarTable, session))
     admin.add_view(ModelView(User, session))
+    admin.add_view(ModelView(SolarTable, session))
+
 
     config_logger(app)
 
