@@ -1,0 +1,5 @@
+e3d9fb1d-5e19-4db9-8331-e98ec54690d7 - 2023-06-20 19:10:06,003 - log_utils.py - log_utils - config_logger - 52 - [INFO] - logger configured.!!!
+be402060-b238-432e-a8cc-748742462597 - 2023-06-20 19:10:11,294 - product.py - product - __init__ - 21 - [INFO] - In the constructor of Product
+be402060-b238-432e-a8cc-748742462597 - 2023-06-20 19:10:11,294 - product.py - product - get - 28 - [INFO] - In get method of product info
+1b9604fb-2bb8-4bae-9ca3-dad0fd8b2b89 - 2023-06-20 19:10:12,370 - product.py - product - __init__ - 21 - [INFO] - In the constructor of Product
+1b9604fb-2bb8-4bae-9ca3-dad0fd8b2b89 - 2023-06-20 19:10:12,370 - product.py - product - get - 28 - [INFO] - In get method of product info

@@ -1,45 +1,50 @@
-# Search Data Pool
+# Flask Boilerplate
+```
+Flask APIs for the fetching the product info
+```
 
-This module allows users to search a remote data pool for products, review the search results, and add selected products to the Odoo product catalog. The module adds a menu item "Search Data Pool" under the Purchases module.
+## Project Description
+```
+To set up this project on local Please follow the steps mention below:
+1. First clone the Repository from the git lab.
+2. Create a Python 3.6 virtual environment using command "virtualenv virt_name --python=python3.6".
+3. Now activate the virtual env using command "source virt_name/bin/activate".
+4. Now install the library requirements using the command "pip install -r requirement.txt"
+4. Now change the database path from the .env.example file and use the command "source .env.example".
+5. Now upgrade the database using command "alembic upgrade head".
+6. Repository setup completed.
+7. Start the server using command "python app.py"
+```
 
-## Features
+## alembic commands to run migrations
+```
+1. Initiate the alembic -> alembic init alembic
+2. For creating the revision -> alembic revision -m "your message"
+3. automatic detects model changes and generate commit file -> alembic revision --autogenerate -m "your message"
+4. create tables with basic data in your DB -> alembic upgrade head
 
-- Search the remote data pool using a keyword
-- Display search results in a list view
-- Select products to add to the Odoo product catalog
-- Add selected products to the Odoo catalog with a single click
+```
 
-## Installation
+### How to run the crawlers
+```
+Run the Following command to run the crawlers
+1. python krannich.py 
+2. python memodo.py
+This will run the both the crawlers and store the data to the database.
+```
 
-1. Place the "search_data_pool" directory in your Odoo addons folder.
-2. Update the apps list in your Odoo instance.
-3. Install the "Search Data Pool" module from the Apps menu.
+### API endpoint to check the product details
+```
+All this API need an authorization api key that needs to pass in the header
 
-## Usage
+Product List API:-
+http://localhost:5009/api/product
+http://localhost:5009/api/product/?product_id=1
 
-1. Go to the Purchases module.
-2. Click on the "Search Data Pool" menu item.
-3. Enter a keyword in the search field and click the "Search" button.
-4. Review the search results in the list view.
-5. Select the products you want to add to the Odoo catalog by checking the "Add to Catalog" checkbox.
-6. Click the "Add Selected Products to Catalog" button to add the selected products to the Odoo product catalog.
+For admin UI:-
+http://localhost:5009/admin
 
-## Dependencies
-
-- Odoo 14 or later
-- `purchase` module
-
-## Contributing
-
-If you would like to contribute to the development of this module, please follow these steps:
-
-1. Fork the repository on GitHub.
-2. Clone your fork to your local machine.
-3. Create a new branch for your feature or bugfix.
-4. Make your changes and commit them to your branch.
-5. Push your changes to your fork on GitHub.
-6. Create a pull request to the main repository.
-
-## License
-
-This module is released under the AGPL-3 license. For more information, see the LICENSE file.
+example curl request for the product api:-
+curl --location 'http://127.0.0.1:5009/api/product?product_id=1' \
+--header 'Authorization: {your api key}'
+```
